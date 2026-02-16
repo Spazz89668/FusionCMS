@@ -577,7 +577,8 @@
 																	<option selected disabled hidden>{{account_encryption}}</option>
 																	<option value="SRP6">SRP6</option>
 																	<option value="SPH">SPH</option>
-																	<option value="SRP">SRP</option>
+                                                                    <option value="SRP">SRP</option>
+                                                                    <option value="SHA256">SHA256</option>
 																</select>
 															</div>
 														</div>

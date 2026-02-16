@@ -74,7 +74,7 @@
     "auth_config": "Configuração de autenticação <span style='color: #f00;'>(! importante)</span>",
     "auth_config_detail": "Configurações relacionadas ao banco de dados Realmd/Logon/Auth e criptografia de senha de conta.",
     "account_encryption": "Criptografia de senha da conta",
-    "account_encryption_detail": "<span style='color: #f00;'>SRP6:</span> Selecione isso para a maioria dos emuladores modernos (com colunas <b>salt</b> e <b>verifier</b> na tabela <b>auth.accounts</b>).<br/><span style='color: #f00;'>SPH:</span> Selecione isso para emuladores antigos (com coluna <b>sha_pass_hash</b> na tabela <b>auth.accounts</b>).<br/><span style='color: #f00;'>SRP:</span> Principalmente para emuladores <b>cMangos</b> e <b>vMangos</b>.",
+    "account_encryption_detail": "<span style='color: #f00;'>SRP6:</span> Selecione isso para a maioria dos emuladores modernos (com colunas <b>salt</b> e <b>verifier</b> na tabela <b>auth.accounts</b>).<br/><span style='color: #f00;'>SPH:</span> Selecione isso para emuladores antigos (com coluna <b>sha_pass_hash</b> na tabela <b>auth.accounts</b>).<br/><span style='color: #f00;'>SRP:</span> Principalmente para emuladores <b>cMangos</b> e <b>vMangos</b>.<br/><span style='color: #f00;'>SHA256:</span> Para LegionCore personalizado usando username+password+email+pepper.",
     "rbac": "RBAC",
     "rbac_detail": "Defina sim para emuladores que possuem tabelas RBAC.",
     "battle_net": "BattleNet",

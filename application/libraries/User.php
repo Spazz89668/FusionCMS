@@ -57,8 +57,12 @@ class User
 
         if ($encryption == 'SRP6') {
             $hash = $this->CI->crypto->SRP6($username, $password);
-        } else if ($encryption == 'SRP') {
+        } elseif ($encryption == 'SRP') {
             $hash = $this->CI->crypto->SRP($username, $password);
+        } elseif ($encryption == 'SHA256') {
+            $id = $this->CI->external_account_model->getId($username);
+            $email = $this->CI->external_account_model->getEmail($id);
+            $hash = $this->CI->crypto->SHA256($username, $password, $email ?: "");
         } else {
             $hash = $this->CI->crypto->SHA_PASS_HASH($username, $password);
         }

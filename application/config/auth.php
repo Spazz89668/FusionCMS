@@ -11,7 +11,7 @@ if (! defined('BASEPATH')) {
  * @link    https://github.com/FusionWowCMS/FusionCMS
  */
 
-$config['account_encryption'] = "SRP6"; // SPH, SRP, SRP6
+$config['account_encryption'] = "SRP6"; // SPH, SRP, SRP6, SHA 256
 
 $config['rbac'] = true;
 

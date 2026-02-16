@@ -67,8 +67,13 @@ class Accounts_model extends CI_Model
                     unset($columns[column('account', 'salt')]);
                 }
             } elseif ($encryption == 'SRP6' || $encryption == 'SRP') {
-                if (column('account', 'sha_pass_hash')){
+                if (column('account', 'sha_pass_hash')) {
                     unset($columns[column('account', 'sha_pass_hash')]);
+                }
+            } elseif ($encryption == 'SHA256') {
+                if (column('account', 'verifier') && column('account', 'salt')){
+                    unset($columns[column('account', 'verifier')]);
+                    unset($columns[column('account', 'salt')]);
                 }
             }
 

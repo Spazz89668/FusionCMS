@@ -170,12 +170,12 @@ class External_account_model extends CI_Model
 
         $data = [
             column("account", "username") => strtoupper($username),
-            column("account", "email") => $email,
+            column("account", "email") => strtoupper(string: $email),
             column("account", "expansion") => $expansion,
             column("account", "joindate") => date("Y-m-d H:i:s")
         ];
 
-        list($hash, $data) = $this->setAccountPassword($encryption, $username, $password, $data);
+        list($hash, $data) = $this->setAccountPassword($encryption, $username, $password, $data, $email);
 
         if (!preg_match("/^cmangos/i", get_class($this->realms->getEmulator())))
         {
@@ -365,7 +365,7 @@ class External_account_model extends CI_Model
     {
         $this->connect();
 
-        $count = $this->connection->table(table("account"))->where([column("account", "email") => $email])->countAllResults();
+        $count = $this->connection->table(table("account"))->where([column("account", "email") => strtoupper(string: $email)])->countAllResults();
 
         if ($count) {
             return true;
@@ -406,7 +406,7 @@ class External_account_model extends CI_Model
 
         $encryption = $this->config->item('account_encryption');
 
-        list($hash, $data) = $this->setAccountPassword($encryption, $username, $newPassword, $data);
+        list($hash, $data) = $this->setAccountPassword($encryption, $username, $newPassword, $data, $email);
 
         $builder->update($data);
 
@@ -559,7 +559,7 @@ class External_account_model extends CI_Model
 
             return $result[0];
         } else {
-            return false;
+            return "";
         }
     }
 
@@ -658,16 +658,19 @@ class External_account_model extends CI_Model
      * @param array $data
      * @return array
      */
-    private function setAccountPassword(?string $encryption, $username, $newPassword, array $data): array
+    private function setAccountPassword(?string $encryption, $username, $newPassword, array $data, $email = null): array
     {
         if ($encryption == 'SRP6') {
             $hash = $this->crypto->SRP6($username, $newPassword);
             $data[column("account", "salt")] = $hash["salt"];
             $data[column("account", "verifier")] = $hash["verifier"];
-        } else if ($encryption == 'SRP') {
+        } elseif ($encryption == 'SRP') {
             $hash = $this->crypto->SRP($username, $newPassword);
             $data[column("account", "salt")] = $hash["salt"];
             $data[column("account", "verifier")] = $hash["verifier"];
+        } elseif ($encryption == 'SHA256') {
+            $hash = $this->crypto->SHA256((string)$username, (string)$newPassword, (string)$email);
+            $data[column("account", "sha_pass_hash")] = $hash["verifier"];
         } else {
             $hash = $this->crypto->SHA_PASS_HASH($username, $newPassword);
             $data[column("account", "sha_pass_hash")] = $hash["verifier"];

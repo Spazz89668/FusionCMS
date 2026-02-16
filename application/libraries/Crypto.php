@@ -4,6 +4,14 @@ use MX\CI;
 
 class Crypto
 {
+    /**
+     * Convert only ASCII latin letters to uppercase.
+     */
+    private function upperOnlyLatin(string $string): string
+    {
+        return strtr($string, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+    }
+
     public function __construct()
     {
         if (!extension_loaded('gmp')) { // make sure it's loaded
@@ -150,6 +158,42 @@ class Crypto
 
         return [
             'verifier' => strtoupper(bin2hex(strrev(hex2bin(strtoupper(hash("sha256", strtoupper(hash("sha256", strtoupper($email)) . ":" . strtoupper($password))))))))
+        ];
+    }
+
+    /**
+     * Creates a SHA256 hash of the password using username, password and email
+     *
+     * @param string $username
+     * @param string $password
+     * @param string $email
+     * @return array
+     */
+    public function SHA256(string $username = "", string $password = "", string $email = ""): array
+    {
+        if (!is_string($username)) {
+            $username = "";
+        }
+        if (!is_string($password)) {
+            $password = "";
+        }
+        if (!is_string($email)) {
+            $email = "";
+        }
+
+        $pepper = getenv('LegionCore_Pepper');
+        if ($pepper === false) {
+            $pepper = 'j2K8!xZp4vQ9mR7wT6sB1eL3cH0uN42A';
+        }
+
+        $username = $this->upperOnlyLatin($username);
+        $password = $this->upperOnlyLatin($password);
+        $email = $this->upperOnlyLatin($email);
+
+        $digest = hash('sha256', $username . ':' . $password . ':' . $email . ':' . $pepper, true);
+
+        return [
+            'verifier' => strtoupper(bin2hex(strrev($digest)))
         ];
     }
 

@@ -74,7 +74,7 @@
     "auth_config": "Auth configuration <span style='color: #f00;'>(! important)</span>",
     "auth_config_detail": "Settings related to Realmd/Logon/Auth database and account password encryption.",
     "account_encryption": "Account password encryption",
-    "account_encryption_detail": "<span style='color: #f00;'>SRP6:</span> Select this for most modern emulators (with <b>salt</b> and <b>verifier</b> columns in <b>auth.accounts</b> table).<br/><span style='color: #f00;'>SPH:</span> Select this for aged emulators (with <b>sha_pass_hash</b> column in <b>auth.accounts</b> table).<br/><span style='color: #f00;'>SRP:</span> Mostly for <b>cMangos</b> and <b>vMangos</b> emulators.",
+    "account_encryption_detail": "<span style='color: #f00;'>SRP6:</span> Select this for most modern emulators (with <b>salt</b> and <b>verifier</b> columns in <b>auth.accounts</b> table).<br/><span style='color: #f00;'>SPH:</span> Select this for aged emulators (with <b>sha_pass_hash</b> column in <b>auth.accounts</b> table).<br/><span style='color: #f00;'>SRP:</span> Mostly for <b>cMangos</b> and <b>vMangos</b> emulators.<br/><span style='color: #f00;'>SHA256:</span> For custom LegionCore using username+password+email+pepper.",
     "rbac": "RBAC",
     "rbac_detail": "Set yes for emulators that has RBAC tables.",
     "battle_net": "BattleNet",

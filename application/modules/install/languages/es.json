@@ -74,7 +74,7 @@
     "auth_config": "Configuración de autenticación <span style='color: #f00;'>(¡importante!)</span>",
     "auth_config_detail": "Configuraciones relacionadas con la base de datos Realmd/Logon/Auth y el cifrado de contraseñas de cuentas.",
     "account_encryption": "Cifrado de contraseñas de cuenta",
-    "account_encryption_detail": "<span style='color: #f00;'>SRP6:</span> Selecciona esto para los emuladores más modernos (con las columnas <b>salt</b> y <b>verifier</b> en la tabla <b>auth.accounts</b>).<br/><span style='color: #f00;'>SPH:</span> Selecciona esto para los emuladores más antiguos (con la columna <b>sha_pass_hash</b> en la tabla <b>auth.accounts</b>).<br/><span style='color: #f00;'>SRP:</span> Principalmente para los emuladores <b>cMangos</b> y <b>vMangos</b>.",
+    "account_encryption_detail": "<span style='color: #f00;'>SRP6:</span> Selecciona esto para los emuladores más modernos (con las columnas <b>salt</b> y <b>verifier</b> en la tabla <b>auth.accounts</b>).<br/><span style='color: #f00;'>SPH:</span> Selecciona esto para los emuladores más antiguos (con la columna <b>sha_pass_hash</b> en la tabla <b>auth.accounts</b>).<br/><span style='color: #f00;'>SRP:</span> Principalmente para los emuladores <b>cMangos</b> y <b>vMangos</b>.<br/><span style='color: #f00;'>SHA256:</span> Para LegionCore personalizado con username+password+email+pepper. (dufernst-LegionCore)",
     "rbac": "RBAC",
     "rbac_detail": "Selecciona sí para los emuladores que tienen tablas RBAC.",
     "battle_net": "BattleNet",

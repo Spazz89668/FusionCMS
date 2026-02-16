@@ -40,6 +40,7 @@
 									<option value="SRP6" {if $config.account_encryption == 'SRP6'}selected{/if}>SRP6</option>
 									<option value="SPH" {if $config.account_encryption == 'SPH'}selected{/if}>SPH</option>
 									<option value="SRP" {if $config.account_encryption == 'SRP'}selected{/if}>SRP</option>
+                                    <option value="SHA256" {if $config.account_encryption == 'SHA256'}selected{/if}>SHA256</option>
 								</select>
 							</div>
 							<p class="col-sm-12 col-form-label">{lang('settings_srp6_info', 'admin')}</p>
